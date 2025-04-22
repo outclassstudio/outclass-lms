@@ -1,6 +1,6 @@
 "use client";
 
-import { Bars3Icon, UserCircleIcon } from "@heroicons/react/16/solid";
+import { UserCircleIcon } from "@heroicons/react/16/solid";
 import { usePathname, useRouter } from "next/navigation";
 
 export default function Header() {
