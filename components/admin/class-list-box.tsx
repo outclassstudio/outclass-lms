@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 export default function ClassListBox({
   title,
   period,
-  inProgress,
   classId,
 }: {
   title: string;
