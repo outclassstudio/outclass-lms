@@ -3,8 +3,8 @@ import AdminMenuBox from "@/components/admin/admin-menu-box";
 export default function Admin() {
   const ADMIN_MENU = [
     { title: "클래스 관리", link: "/admin/class" },
-    { title: "섹션 등록", link: "/admin/add/section" },
-    { title: "퀴즈 만들기", link: "/admin/add/quiz" },
+    { title: "섹션 관리", link: "/admin/section" },
+    { title: "퀴즈 만들기", link: "/admin/quiz" },
     { title: "현황 조회", link: "/admin/status" },
   ];
 
