@@ -1,4 +1,5 @@
 import ClassListBox from "@/components/admin/class-list-box";
+import { DUMMY_CLASS_LIST } from "@/lib/dummyData";
 import {
   MagnifyingGlassIcon,
   PlusIcon,
@@ -6,21 +7,6 @@ import {
 } from "@heroicons/react/16/solid";
 
 export default function AddClass() {
-  const DUMMY_CLASS_LIST = [
-    {
-      id: 1,
-      title: "스마트 팩토리 개발자 입문 과정 7기",
-      period: "2024-12 ~ 2025-05",
-      inProgress: true,
-    },
-    {
-      id: 2,
-      title: "신재생 에너지 3기",
-      period: "2025-05 ~ 2025-09",
-      inProgress: false,
-    },
-  ];
-
   return (
     <div className="mt-6 sm:mt-10 w-full lg:w-[1024px] flex flex-col gap-4 p-4">
       <div className="text-3xl sm:text-4xl font-black mb-2 sm:mb-6 flex gap-2 items-center">

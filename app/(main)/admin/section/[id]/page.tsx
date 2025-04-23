@@ -1,4 +1,5 @@
 import ChapterListBox from "@/components/admin/chapter-list-box";
+import { DUMMY_CHAPTER_LIST } from "@/lib/dummyData";
 import { PageParams } from "@/lib/types/common";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/16/solid";
 
@@ -8,28 +9,6 @@ export default async function SectionDeteil({
   params: PageParams;
 }) {
   const { id } = await params;
-  const DUMMY_CLASS_LIST = [
-    {
-      id: 1,
-      title: "1. 파이썬 개요",
-    },
-    {
-      id: 2,
-      title: "2. 변수와 자료형",
-    },
-    {
-      id: 3,
-      title: "3. 산술 연산자",
-    },
-    {
-      id: 4,
-      title: "4. 조건문",
-    },
-    {
-      id: 5,
-      title: "5. 반복문",
-    },
-  ];
 
   return (
     <div className="mt-6 sm:mt-10 w-full lg:w-[1024px] flex flex-col gap-4 p-4">
@@ -50,7 +29,7 @@ export default async function SectionDeteil({
         </div>
       </div>
       <div>
-        {DUMMY_CLASS_LIST.map((data, idx) => (
+        {DUMMY_CHAPTER_LIST.map((data, idx) => (
           <ChapterListBox title={data.title} chapterId={data.id} key={idx} />
         ))}
       </div>
