@@ -15,7 +15,7 @@ export default function Header() {
       <div className="flex sm:gap-12 items-center">
         {/* <Bars3Icon className="size-6 text-neutral-800" /> */}
         <div
-          className="text-xl sm:text-2xl font-extrabold mr-3 sm:mr-0"
+          className="text-xl sm:text-2xl font-extrabold mr-3 sm:mr-0 cursor-pointer"
           onClick={() => router.push("/")}
         >
           MY LMS
