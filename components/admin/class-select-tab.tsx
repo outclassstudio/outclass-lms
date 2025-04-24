@@ -1,3 +1,4 @@
+import { DUMMY_CREW_LIST } from "@/lib/dummyData";
 import { Dispatch, SetStateAction } from "react";
 
 interface ClassSelectTabProps {
@@ -30,7 +31,9 @@ export default function ClassSelectTab({
       } py-3 px-4 cursor-pointer`}
       onClick={() => {
         setSelectedClass(title);
-        setCrewList((prev) => prev.filter((data) => data.class === title));
+        setCrewList(() =>
+          DUMMY_CREW_LIST.filter((data) => data.class === title)
+        );
       }}
     >
       {title}
