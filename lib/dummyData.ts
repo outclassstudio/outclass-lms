@@ -93,3 +93,36 @@ export const DUMMY_CREW_LIST = [
     class: "SF7TH",
   },
 ];
+
+export const DUMMY_QUIZ_LIST = [
+  {
+    id: 1,
+    title: "기본 개념 퀴즈",
+    section: "Python",
+    chapter: "1. 파이썬 개요",
+  },
+  {
+    id: 2,
+    title: "변수 개념 확인 퀴즈",
+    section: "Python",
+    chapter: "2. 변수와 자료형",
+  },
+  {
+    id: 3,
+    title: "산술 여산자 문제",
+    section: "Python",
+    chapter: "3. 산술 연산자",
+  },
+  {
+    id: 4,
+    title: "조건문 기초 문제",
+    section: "Python",
+    chapter: "4. 조건문",
+  },
+  {
+    id: 5,
+    title: "반복문 기초 문제",
+    section: "Python",
+    chapter: "5. 반복문",
+  },
+];
