@@ -2,10 +2,18 @@
 
 import { UserCircleIcon } from "@heroicons/react/16/solid";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import UserDropdown from "./user-dropdown";
 
 export default function Header() {
+  const [isDropdwonOpen, setIsDropDownOpen] = useState(false);
+
   const router = useRouter();
   const pahtname = usePathname();
+
+  const handleDropdownOpen = () => {
+    setIsDropDownOpen((prev) => !prev);
+  };
 
   return (
     <div
@@ -43,9 +51,13 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div>
-        <UserCircleIcon className="size-7 sm:size-8 text-neutral-600" />
+      <div className="relative">
+        <UserCircleIcon
+          onClick={handleDropdownOpen}
+          className="size-7 sm:size-8 text-neutral-600 cursor-pointer"
+        />
       </div>
+      {isDropdwonOpen ? <UserDropdown /> : ""}
     </div>
   );
 }
