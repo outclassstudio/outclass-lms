@@ -45,4 +45,7 @@ body {
   .normal-spinner {
     @apply animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-gray-800 dark:border-gray-300;
   }
+  .add-asterisk {
+    @apply after:text-rose-500 after:content-['*'] after:text-base after:ml-1;
+  }
 }

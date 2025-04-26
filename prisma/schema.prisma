@@ -8,9 +8,12 @@ datasource db {
 }
 
 model Class {
-  id       String @id @default(uuid())
-  name     String // 예: "A반", "B반"
-  students User[] @relation("ClassStudents")
+  id        String   @id @default(uuid())
+  name      String // 예: "A반", "B반"
+  alias     String
+  startDate DateTime // 예: 2024-12-09
+  endDate   DateTime // 예: 2025-05-12
+  students  User[]   @relation("ClassStudents")
 }
 
 enum Role {
