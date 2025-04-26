@@ -7,7 +7,7 @@ export default function ClassPage() {
         🏫 클래스 관리
       </div>
       <div className="flex gap-4">
-        <AdminMenuBox title={"클래스 등록"} link={"/admin/class/add"} />
+        <AdminMenuBox title={"클래스 등록"} link={"/admin/class/list"} />
         <AdminMenuBox title={"학생 등록"} link={"/admin/class/crew"} />
       </div>
     </div>
