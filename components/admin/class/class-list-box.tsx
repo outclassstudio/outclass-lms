@@ -3,8 +3,9 @@
 import { dateFormatter } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ClassDeleteModal from "./class-delete-modal";
+
 import { deleteClass } from "@/app/(main)/admin/class/list/actions";
+import DeleteConfirmModal from "@/components/common/delete-confirm-modal";
 
 export default function ClassListBox({
   title,
@@ -93,7 +94,7 @@ export default function ClassListBox({
         </button>
       </div>
       {isModalOpen ? (
-        <ClassDeleteModal
+        <DeleteConfirmModal
           setModalOpen={handleDeleteModalOpen}
           handleDelete={handleDelete}
         />

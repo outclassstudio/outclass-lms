@@ -1,4 +1,4 @@
-import AddCrewForm from "@/components/admin/crew-add-form";
+import AddCrewForm from "@/components/admin/crew/crew-add-form";
 import { getClassName } from "../actions";
 
 export default async function AddCrewPage() {

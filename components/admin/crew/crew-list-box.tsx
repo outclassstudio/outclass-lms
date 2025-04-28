@@ -1,9 +1,10 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import ClassDeleteModal from "./class-delete-modal";
+
 import { useState } from "react";
 import { deleteCrew } from "@/app/(main)/admin/class/crew/actions";
+import DeleteConfirmModal from "@/components/common/delete-confirm-modal";
 
 export default function CrewListBox({
   crewId,
@@ -52,7 +53,7 @@ export default function CrewListBox({
         </button>
       </div>
       {isModalOpen ? (
-        <ClassDeleteModal
+        <DeleteConfirmModal
           setModalOpen={handleDeleteModalOpen}
           handleDelete={handleDelete}
         />

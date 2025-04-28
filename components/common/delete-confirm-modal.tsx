@@ -3,7 +3,7 @@ interface DeleteClassModalProps {
   handleDelete: () => void;
 }
 
-export default function ClassDeleteModal({
+export default function DeleteConfirmModal({
   setModalOpen,
   handleDelete,
 }: DeleteClassModalProps) {

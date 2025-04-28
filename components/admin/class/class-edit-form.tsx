@@ -2,7 +2,7 @@
 
 import { ClassType, editClass } from "@/app/(main)/admin/class/list/actions";
 import { useActionState, useState } from "react";
-import Input from "../common/input";
+import Input from "../../common/input";
 import { dateFormatter } from "@/lib/utils";
 import { FormError } from "@/lib/types/common";
 

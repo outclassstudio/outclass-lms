@@ -1,4 +1,4 @@
-import ClassEditForm from "@/components/admin/class-edit-form";
+import ClassEditForm from "@/components/admin/class/class-edit-form";
 import { PageParams } from "@/lib/types/common";
 import { getSingleClass } from "../../actions";
 
