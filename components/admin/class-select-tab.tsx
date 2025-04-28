@@ -1,23 +1,38 @@
-import { DUMMY_CREW_LIST } from "@/lib/dummyData";
+import { CrewListType } from "@/app/(main)/admin/class/crew/actions";
+import { $Enums } from "@prisma/client";
 import { Dispatch, SetStateAction } from "react";
 
 interface ClassSelectTabProps {
   title: string;
+  crews: CrewListType;
   selectedClass: string;
   setSelectedClass: (value: SetStateAction<string>) => void;
   setCrewList: Dispatch<
     SetStateAction<
-      {
-        id: number;
+      ({
+        Class: {
+          id: string;
+          name: string;
+          alias: string;
+          startDate: Date;
+          endDate: Date;
+        } | null;
+      } & {
+        id: string;
         name: string;
-        class: string;
-      }[]
+        email: string;
+        password: string;
+        role: $Enums.Role;
+        createdAt: Date;
+        classId: string | null;
+      })[]
     >
   >;
 }
 
 export default function ClassSelectTab({
   title,
+  crews,
   selectedClass,
   setSelectedClass,
   setCrewList,
@@ -31,9 +46,7 @@ export default function ClassSelectTab({
       } py-3 px-4 cursor-pointer`}
       onClick={() => {
         setSelectedClass(title);
-        setCrewList(() =>
-          DUMMY_CREW_LIST.filter((data) => data.class === title)
-        );
+        setCrewList(() => crews!.filter((data) => data.Class?.alias === title));
       }}
     >
       {title}

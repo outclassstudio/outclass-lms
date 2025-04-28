@@ -5,7 +5,7 @@ import { SquaresPlusIcon } from "@heroicons/react/16/solid";
 import { useActionState } from "react";
 import { createClass } from "../actions";
 
-export default function AddClassForm() {
+export default function AddClassPage() {
   const [state, dispatch] = useActionState(createClass, null);
 
   return (
