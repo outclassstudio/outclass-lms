@@ -1,6 +1,6 @@
 import { PageParams } from "@/lib/types/common";
 import { getClassName, getSingleCrew } from "../../actions";
-import EditCrewForm from "@/components/admin/crew-edit-form";
+import EditCrewForm from "@/components/admin/crew/crew-edit-form";
 
 export default async function AddClassForm({ params }: { params: PageParams }) {
   const { id } = await params;

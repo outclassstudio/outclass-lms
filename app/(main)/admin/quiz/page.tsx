@@ -1,6 +1,6 @@
 "use client";
 
-import QuizListBox from "@/components/admin/quiz-list-box";
+import QuizListBox from "@/components/admin/quiz/quiz-list-box";
 import {
   DUMMY_CHAPTER_LIST,
   DUMMY_QUIZ_LIST,

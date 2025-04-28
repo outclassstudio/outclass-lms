@@ -1,4 +1,4 @@
-import SectionListBox from "@/components/admin/section-list-box";
+import SectionListBox from "@/components/admin/section/section-list-box";
 import { DUMMY_SECTION_LIST } from "@/lib/dummyData";
 import {
   MagnifyingGlassIcon,

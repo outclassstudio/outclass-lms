@@ -1,4 +1,4 @@
-import ChapterListBox from "@/components/admin/chapter-list-box";
+import ChapterListBox from "@/components/admin/chapter/chapter-list-box";
 import { DUMMY_CHAPTER_LIST } from "@/lib/dummyData";
 import { PageParams } from "@/lib/types/common";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/16/solid";

@@ -1,4 +1,4 @@
-import ClassListBox from "@/components/admin/class-list-box";
+import ClassListBox from "@/components/admin/class/class-list-box";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import { getClasses } from "./actions";

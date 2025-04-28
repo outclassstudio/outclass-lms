@@ -1,7 +1,7 @@
-import CrewList from "@/components/admin/crew-list";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/16/solid";
 import Link from "next/link";
 import { getClassName, getCrews } from "./actions";
+import CrewList from "@/components/admin/crew/crew-list";
 
 export default async function CrewPage() {
   const crewList = await getCrews();
