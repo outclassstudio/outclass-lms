@@ -8,12 +8,13 @@ datasource db {
 }
 
 model Class {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   name      String // 예: "A반", "B반"
   alias     String
   startDate DateTime // 예: 2024-12-09
   endDate   DateTime // 예: 2025-05-12
-  students  User[]   @relation("ClassStudents")
+  students  User[]    @relation("ClassStudents")
+  sections  Section[]
 }
 
 enum Role {
@@ -29,8 +30,8 @@ model User {
   role        Role // 'student' | 'admin'
   createdAt   DateTime     @default(now())
   quizResults QuizResult[]
-  Answer      Answer[]
-  Class       Class?       @relation("ClassStudents", fields: [classId], references: [id])
+  answer      Answer[]
+  class       Class?       @relation("ClassStudents", fields: [classId], references: [id])
   classId     String?
 }
 
@@ -39,6 +40,8 @@ model Section {
   title    String
   order    Int
   chapters Chapter[]
+  class    Class?    @relation(fields: [classId], references: [id])
+  classId  String?
 }
 
 model Chapter {
@@ -46,7 +49,7 @@ model Chapter {
   title     String
   order     Int
   quizzes   Quiz[]
-  Section   Section? @relation(fields: [sectionId], references: [id])
+  section   Section? @relation(fields: [sectionId], references: [id])
   sectionId String?
 }
 
@@ -74,7 +77,7 @@ model Question {
   explanation  String? // 정답 해설 (선택)
   options      Option[] // 객관식 보기
   subjective   SubjectiveAnswer? // 주관식 정답
-  Answer       Answer[]
+  answer       Answer[]
 }
 
 model Option {

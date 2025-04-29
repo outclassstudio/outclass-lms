@@ -1,6 +1,6 @@
 "use client";
 
-import { ClassType, editClass } from "@/app/(main)/admin/class/list/actions";
+import { ClassType, editClass } from "@/app/(main)/admin/class/actions";
 import { useActionState, useState } from "react";
 import Input from "../../common/input";
 import { dateFormatter } from "@/lib/utils";

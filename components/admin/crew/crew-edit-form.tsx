@@ -1,6 +1,6 @@
 "use client";
 
-import { CrewType, editCrew } from "@/app/(main)/admin/class/crew/actions";
+import { CrewType, editCrew } from "@/app/(main)/admin/crew/actions";
 import Input from "@/components/common/input";
 import { FormError } from "@/lib/types/common";
 import { SquaresPlusIcon } from "@heroicons/react/16/solid";
@@ -21,7 +21,7 @@ export default function EditCrewForm({
   const [name, setName] = useState(targetCrew!.name);
   const [email, setEmail] = useState(targetCrew!.email);
   const [password, setPassword] = useState(targetCrew!.password);
-  const [selectedClass, setSelectedClass] = useState(targetCrew?.Class?.name);
+  const [selectedClass, setSelectedClass] = useState(targetCrew?.class?.name);
 
   function interceptAction(_: FormError | null, formData: FormData) {
     const filtered = classNameList.filter((data) => data.name == selectedClass);

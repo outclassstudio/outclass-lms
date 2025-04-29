@@ -4,7 +4,7 @@ import { dateFormatter } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { deleteClass } from "@/app/(main)/admin/class/list/actions";
+import { deleteClass } from "@/app/(main)/admin/class/actions";
 import DeleteConfirmModal from "@/components/common/delete-confirm-modal";
 
 export default function ClassListBox({
@@ -57,7 +57,7 @@ export default function ClassListBox({
   };
 
   const moveToEditPage = () => {
-    router.push(`/admin/class/list/edit/${classId}`);
+    router.push(`/admin/class/edit/${classId}`);
   };
 
   return (
