@@ -29,7 +29,7 @@ export async function getCrews() {
   try {
     const crewList = await db.user.findMany({
       include: {
-        Class: true,
+        class: true,
       },
     });
     return crewList;
@@ -47,7 +47,7 @@ export async function getSingleCrew(id: string) {
         id,
       },
       include: {
-        Class: true,
+        class: true,
       },
     });
     return crew;

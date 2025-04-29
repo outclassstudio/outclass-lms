@@ -6,7 +6,7 @@ import CrewListBox from "./crew-list-box";
 import {
   ClassNameListType,
   CrewListType,
-} from "@/app/(main)/admin/class/crew/actions";
+} from "@/app/(main)/admin/crew/actions";
 
 export default function CrewList({
   crews,
@@ -50,7 +50,7 @@ export default function CrewList({
           <CrewListBox
             crewId={data.id}
             crewName={data.name}
-            code={data.Class!.alias}
+            code={data.class!.alias}
             key={idx}
           />
         ))

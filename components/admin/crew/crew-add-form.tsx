@@ -1,6 +1,6 @@
 "use client";
 
-import { createCrew } from "@/app/(main)/admin/class/crew/actions";
+import { createCrew } from "@/app/(main)/admin/crew/actions";
 import Input from "@/components/common/input";
 import { FormError } from "@/lib/types/common";
 import { SquaresPlusIcon } from "@heroicons/react/16/solid";

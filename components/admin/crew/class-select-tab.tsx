@@ -1,4 +1,4 @@
-import { CrewListType } from "@/app/(main)/admin/class/crew/actions";
+import { CrewListType } from "@/app/(main)/admin/crew/actions";
 import { $Enums } from "@prisma/client";
 import { Dispatch, SetStateAction } from "react";
 
@@ -10,7 +10,7 @@ interface ClassSelectTabProps {
   setCrewList: Dispatch<
     SetStateAction<
       ({
-        Class: {
+        class: {
           id: string;
           name: string;
           alias: string;
@@ -46,7 +46,7 @@ export default function ClassSelectTab({
       } py-3 px-4 cursor-pointer`}
       onClick={() => {
         setSelectedClass(title);
-        setCrewList(() => crews!.filter((data) => data.Class?.alias === title));
+        setCrewList(() => crews!.filter((data) => data.class?.alias === title));
       }}
     >
       {title}

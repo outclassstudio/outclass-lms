@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from "next/navigation";
 
 import { useState } from "react";
-import { deleteCrew } from "@/app/(main)/admin/class/crew/actions";
+import { deleteCrew } from "@/app/(main)/admin/crew/actions";
 import DeleteConfirmModal from "@/components/common/delete-confirm-modal";
 
 export default function CrewListBox({
