@@ -19,7 +19,7 @@ export default function AddSectionForm({
     const filtered = classNameList!.filter(
       (data) => data.name == selectedClass
     );
-    console.log(classNameList, filtered, selectedClass);
+
     formData.set("class", filtered[0].id);
 
     return createSection(_, formData);
