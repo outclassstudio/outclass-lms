@@ -21,14 +21,15 @@ export default function ChapterListBox({
   sectionId: string;
 }) {
   const [isModalOpen, setModalOpen] = useState(false);
-
   const [isEdit, setIsEdit] = useState(false);
   const [chapterTitle, setChapterTitle] = useState(title);
   // const router = useRouter();
   // const pathname = usePathname();
 
   const handleChapterEdit = async () => {
-    await editChapter(chapterTitle, order, sectionId, chapterId);
+    if (isEdit) {
+      await editChapter(chapterTitle, order, sectionId, chapterId);
+    }
 
     setIsEdit((prev) => !prev);
   };
