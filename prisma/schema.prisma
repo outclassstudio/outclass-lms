@@ -57,6 +57,7 @@ model Quiz {
   id          String       @id @default(uuid())
   title       String
   description String
+  order       Int
   chapter     Chapter      @relation(fields: [chapterId], references: [id])
   chapterId   String
   questions   Question[]
@@ -75,6 +76,7 @@ model Question {
   type         QuestionType
   questionText String
   explanation  String? // 정답 해설 (선택)
+  order        Int
   options      Option[] // 객관식 보기
   subjective   SubjectiveAnswer? // 주관식 정답
   answer       Answer[]
