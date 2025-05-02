@@ -7,32 +7,42 @@ import {
   createQuiz,
   SectionChapterListType,
 } from "@/app/(main)/admin/quiz/actions";
-import { ChapterState } from "./quiz-list-form";
+// import { ChapterState } from "./quiz-list-form";
 import { useActionState } from "react";
 import { FormError } from "@/lib/types/common";
+import { useQuizStore } from "@/stores/quizStore";
 
 interface AddQuizModalProps {
+  sectionList: SectionChapterListType;
   setModalOpen: () => void;
   handleSectionChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  selectedSection: string;
-  sectionList: SectionChapterListType;
-  isSectionSelected: boolean;
   handleChapterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  chapterList: ChapterState[];
-  selectedChapter: string;
-  // handleDelete: () => void;
+  // selectedSection: string;
+  // isSectionSelected: boolean;
+  // chapterList: ChapterState[];
+  // selectedChapter: string;
 }
 
 export default function AddQuizModal({
+  sectionList,
   setModalOpen,
   handleSectionChange,
-  selectedSection,
-  sectionList,
-  isSectionSelected,
   handleChapterChange,
-  chapterList,
-  selectedChapter,
-}: AddQuizModalProps) {
+}: // selectedSection,
+// isSectionSelected,
+// chapterList,
+// selectedChapter,
+AddQuizModalProps) {
+  const {
+    isSectionSelected,
+    selectedSection,
+    selectedChapter,
+    chapterList,
+    // setIsSectionSelected,
+    // setSelectedSection,
+    // setSelectedChapter,
+    // setChapterList,
+  } = useQuizStore();
   const [state, dispatch] = useActionState(intercetpAcion, null);
 
   function intercetpAcion(_: FormError | null, formData: FormData) {
@@ -40,8 +50,7 @@ export default function AddQuizModal({
       (chapter) => chapter.title === selectedChapter
     );
     formData.set("chapterId", chapter[0]!.id);
-    console.log(chapter, chapter[0]!.id, formData);
-
+    setModalOpen();
     return createQuiz(null, formData);
   }
 

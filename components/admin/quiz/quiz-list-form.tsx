@@ -6,10 +6,10 @@ import {
 } from "@/app/(main)/admin/quiz/actions";
 import QuizListBox from "@/components/admin/quiz/quiz-list-box";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/16/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddQuizModal from "./quiz-add-modal";
 import QuizSelectBox from "./quiz-select-box";
-// import { useRouter } from "next/navigation";
+import { useQuizStore } from "@/stores/quizStore";
 
 export interface ChapterState {
   id: string;
@@ -25,14 +25,56 @@ export default function QuizListForm({
   sectionList: SectionChapterListType;
   quizListProp: QuizListType;
 }) {
-  const [isSectionSelected, setIsSectionSelected] = useState(false);
-  const [selectedSection, setSelectedSection] = useState("DEFAULT");
-  const [selectedChapter, setSelectedChapter] = useState("DEFAULT");
-  const [chapterList, setChapterList] = useState<ChapterState[]>();
+  const {
+    isSectionSelected,
+    selectedSection,
+    selectedChapter,
+    chapterList,
+    setIsSectionSelected,
+    setSelectedSection,
+    setSelectedChapter,
+    setChapterList,
+  } = useQuizStore();
+
+  // const [isSectionSelected, setIsSectionSelected] = useState(false);
+  // const [selectedSection, setSelectedSection] = useState("DEFAULT");
+  // const [selectedChapter, setSelectedChapter] = useState("DEFAULT");
+  // const [chapterList, setChapterList] = useState<ChapterState[]>();
   const [quizList, setQuizList] = useState(quizListProp);
-  const [isModalOpen, setModalOpen] = useState(false);
   const [filteredQuizList, setFilteredQuizList] = useState(quizListProp);
-  // const router = useRouter();
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    setInitialQuizlist();
+  }, []);
+
+  function setInitialQuizlist() {
+    if (selectedSection === "ALL") {
+      if (selectedChapter === "ALL") {
+        setQuizList(quizListProp);
+      } else {
+        setQuizList(() =>
+          quizListProp!.filter((quiz) => quiz.chapter.title === selectedChapter)
+        );
+      }
+    } else {
+      const filtered = quizListProp!.filter(
+        (quiz) => quiz.chapter.section?.title === selectedSection
+      );
+      // setQuizList(filtered);
+      setFilteredQuizList(filtered);
+
+      if (selectedChapter === "ALL") {
+        setQuizList(filteredQuizList);
+      } else {
+        setQuizList(() =>
+          filteredQuizList!.filter(
+            (quiz) => quiz.chapter.title === selectedChapter
+          )
+        );
+      }
+    }
+  }
 
   const handleSectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (e.target.value === "ALL") {
@@ -67,7 +109,7 @@ export default function QuizListForm({
   };
 
   const handleChapterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value === "전체보기") {
+    if (e.target.value === "ALL") {
       setQuizList(filteredQuizList);
     } else {
       setQuizList(() =>
@@ -130,14 +172,14 @@ export default function QuizListForm({
       )}
       {isModalOpen ? (
         <AddQuizModal
-          handleSectionChange={handleSectionChange}
-          selectedSection={selectedSection}
           sectionList={sectionList}
-          isSectionSelected={isSectionSelected}
+          handleSectionChange={handleSectionChange}
           handleChapterChange={handleChapterChange}
-          selectedChapter={selectedChapter}
-          chapterList={chapterList!}
           setModalOpen={handleModalOpen}
+          // selectedSection={selectedSection}
+          // isSectionSelected={isSectionSelected}
+          // selectedChapter={selectedChapter}
+          // chapterList={chapterList!}
         />
       ) : (
         ""

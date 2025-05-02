@@ -28,13 +28,10 @@ export default function QuizSelectBox({
         <div className="font-bold text-lg">섹션 선택</div>
         <select
           onChange={handleSectionChange}
-          className={`bg-white disabled:bg-neutral-200 disabled:appearance-none input-style py-4 px-2 sm:p-4 text-sm sm:text-base`}
+          className={`bg-white min-w-[200px] disabled:bg-neutral-200 disabled:appearance-none input-style py-4 px-2 sm:p-4 text-sm sm:text-base`}
           value={selectedSection}
           disabled={isDisabled}
         >
-          <option value="DEFAULT" disabled hidden>
-            섹션을 선택해주세요.
-          </option>
           <option value="ALL">전체보기</option>
           {sectionList!.map((section) => (
             <option key={section.id}>{section.title}</option>
@@ -46,13 +43,10 @@ export default function QuizSelectBox({
           <div className="font-bold text-lg">챕터 선택</div>
           <select
             onChange={handleChapterChange}
-            className="input-style bg-white py-4 px-2 sm:p-4 text-sm sm:text-base"
+            className="input-style min-w-[200px] bg-white py-4 px-2 sm:p-4 text-sm sm:text-base"
             value={selectedChapter}
           >
-            <option value="DEFAULT" disabled hidden>
-              챕터를 선택해주세요.
-            </option>
-            <option>전체보기</option>
+            <option value="ALL">전체보기</option>
             {chapterList!.map((chapter) => (
               <option key={chapter.id}>{chapter.title}</option>
             ))}
