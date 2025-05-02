@@ -4,8 +4,9 @@ import db from "@/lib/db";
 import { FormError } from "@/lib/types/common";
 import { Prisma } from "@prisma/client";
 import { quizDataSchema } from "./schema";
+import { redirect } from "next/navigation";
 
-// 전체 섹션 조회
+// 전체 섹션에 챕터 포함해서 조회
 export async function getAllSectionChapter() {
   try {
     const sectionList = await db.section.findMany({
@@ -26,6 +27,7 @@ export type SectionChapterListType = Prisma.PromiseReturnType<
   typeof getAllSectionChapter
 >;
 
+// 모든 퀴즈 조회
 export async function getAllQuizzes() {
   try {
     const quizList = await db.quiz.findMany({
@@ -36,9 +38,7 @@ export async function getAllQuizzes() {
           },
         },
       },
-      orderBy: {
-        order: "asc",
-      },
+      orderBy: [{ chapter: { order: "asc" } }, { order: "asc" }],
     });
     return quizList;
   } catch (e) {
@@ -47,6 +47,7 @@ export async function getAllQuizzes() {
 }
 export type QuizListType = Prisma.PromiseReturnType<typeof getAllQuizzes>;
 
+// 아이디로 퀴즈 조회
 export async function getOneQuiz(id: string) {
   try {
     const quizList = await db.quiz.findUnique({
@@ -68,9 +69,15 @@ export async function getOneQuiz(id: string) {
 }
 export type QuizType = Prisma.PromiseReturnType<typeof getOneQuiz>;
 
+// 퀴즈 생성
 export async function createQuiz(_: FormError | null, formData: FormData) {
   let lastOrderNum;
   const lastSection = await db.quiz.findFirst({
+    where: {
+      chapter: {
+        id: formData.get("chapterId")?.toString(),
+      },
+    },
     orderBy: {
       order: "desc",
     },
@@ -105,11 +112,12 @@ export async function createQuiz(_: FormError | null, formData: FormData) {
         order: result.data.order,
       },
     });
-
-    return null;
+    // return null;
+    redirect("/admin/quiz");
   }
 }
 
+// 퀴즈 수정
 export async function editQuiz(
   title: string,
   description: string,
@@ -141,10 +149,12 @@ export async function editQuiz(
       },
     });
 
-    return null;
+    // return null;
+    redirect("/admin/quiz");
   }
 }
 
+// 퀴즈 삭제
 export async function deleteQuiz(quizId: string) {
   try {
     const result = await db.quiz.delete({
