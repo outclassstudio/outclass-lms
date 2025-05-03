@@ -1,27 +1,21 @@
 import { SectionChapterListType } from "@/app/(main)/admin/quiz/actions";
-import { ChapterState } from "./quiz-list-form";
+import { useQuizStore } from "@/stores/quizStore";
 
 interface QuziSelectProps {
   handleSectionChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  selectedSection: string;
-  sectionList: SectionChapterListType;
-  isSectionSelected: boolean;
   handleChapterChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  chapterList: ChapterState[];
-  selectedChapter: string;
+  sectionList: SectionChapterListType;
   isDisabled?: boolean;
 }
 
 export default function QuizSelectBox({
-  handleSectionChange,
-  selectedSection,
   sectionList,
-  isSectionSelected,
+  handleSectionChange,
   handleChapterChange,
-  chapterList,
-  selectedChapter,
   isDisabled = false,
 }: QuziSelectProps) {
+  const { selectedSection, selectedChapter, chapterList } = useQuizStore();
+
   return (
     <div className="flex flex-col sm:flex-row gap-4 mb-4">
       <div className="flex flex-col gap-2">
@@ -38,23 +32,19 @@ export default function QuizSelectBox({
           ))}
         </select>
       </div>
-      {isSectionSelected ? (
-        <div className="flex flex-col gap-2">
-          <div className="font-bold text-lg">챕터 선택</div>
-          <select
-            onChange={handleChapterChange}
-            className="input-style min-w-[200px] bg-white py-4 px-2 sm:p-4 text-sm sm:text-base"
-            value={selectedChapter}
-          >
-            <option value="ALL">전체보기</option>
-            {chapterList!.map((chapter) => (
-              <option key={chapter.id}>{chapter.title}</option>
-            ))}
-          </select>
-        </div>
-      ) : (
-        ""
-      )}
+      <div className="flex flex-col gap-2">
+        <div className="font-bold text-lg">챕터 선택</div>
+        <select
+          onChange={handleChapterChange}
+          className="input-style min-w-[200px] bg-white py-4 px-2 sm:p-4 text-sm sm:text-base"
+          value={selectedChapter}
+        >
+          <option value="ALL">전체보기</option>
+          {chapterList!.map((chapter) => (
+            <option key={chapter.id}>{chapter.title}</option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { createJSONStorage, persist } from "zustand/middleware";
 
 export interface ChapterState {
   id: string;
@@ -20,21 +19,13 @@ interface QuizState {
   setChapterList: (list: ChapterState[]) => void;
 }
 
-export const useQuizStore = create<QuizState>()(
-  persist(
-    (set) => ({
-      isSectionSelected: false,
-      selectedSection: "ALL",
-      selectedChapter: "ALL",
-      chapterList: [],
-      setIsSectionSelected: (v) => set({ isSectionSelected: v }),
-      setSelectedSection: (s) => set({ selectedSection: s }),
-      setSelectedChapter: (c) => set({ selectedChapter: c }),
-      setChapterList: (list) => set({ chapterList: list }),
-    }),
-    {
-      name: "quizListForm", // localStorage 키
-      storage: createJSONStorage(() => localStorage), // 브라우저 로컬 스토리지
-    }
-  )
-);
+export const useQuizStore = create<QuizState>()((set) => ({
+  isSectionSelected: false,
+  selectedSection: "ALL",
+  selectedChapter: "ALL",
+  chapterList: [],
+  setIsSectionSelected: (v) => set({ isSectionSelected: v }),
+  setSelectedSection: (s) => set({ selectedSection: s }),
+  setSelectedChapter: (c) => set({ selectedChapter: c }),
+  setChapterList: (list) => set({ chapterList: list }),
+}));
