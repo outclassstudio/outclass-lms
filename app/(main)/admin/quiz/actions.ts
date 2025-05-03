@@ -15,7 +15,11 @@ export async function getAllSectionChapter() {
       },
       include: {
         class: true,
-        chapters: true,
+        chapters: {
+          orderBy: {
+            order: "asc",
+          },
+        },
       },
     });
     return sectionList;
@@ -38,7 +42,11 @@ export async function getAllQuizzes() {
           },
         },
       },
-      orderBy: [{ chapter: { order: "asc" } }, { order: "asc" }],
+      orderBy: [
+        { chapter: { section: { order: "asc" } } },
+        { chapter: { order: "asc" } },
+        { order: "asc" },
+      ],
     });
     return quizList;
   } catch (e) {
@@ -107,7 +115,7 @@ export async function createQuiz(_: FormError | null, formData: FormData) {
     await db.quiz.create({
       data: {
         title: result.data.title,
-        description: result.data.title,
+        description: result.data.description,
         chapterId: result.data.chapterId,
         order: result.data.order,
       },
@@ -143,7 +151,7 @@ export async function editQuiz(
       },
       data: {
         title: result.data.title,
-        description: result.data.title,
+        description: result.data.description,
         chapterId: result.data.chapterId,
         order: result.data.order,
       },

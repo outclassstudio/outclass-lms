@@ -28,21 +28,8 @@ export default function AddQuizModal({
   setModalOpen,
   handleSectionChange,
   handleChapterChange,
-}: // selectedSection,
-// isSectionSelected,
-// chapterList,
-// selectedChapter,
-AddQuizModalProps) {
-  const {
-    isSectionSelected,
-    selectedSection,
-    selectedChapter,
-    chapterList,
-    // setIsSectionSelected,
-    // setSelectedSection,
-    // setSelectedChapter,
-    // setChapterList,
-  } = useQuizStore();
+}: AddQuizModalProps) {
+  const { selectedChapter, chapterList } = useQuizStore();
   const [state, dispatch] = useActionState(intercetpAcion, null);
 
   function intercetpAcion(_: FormError | null, formData: FormData) {
@@ -78,13 +65,9 @@ AddQuizModalProps) {
           <div className="flex-2 flex flex-col gap-2">
             <QuizSelectBox
               handleSectionChange={handleSectionChange}
-              selectedSection={selectedSection}
               sectionList={sectionList}
-              isSectionSelected={isSectionSelected}
               handleChapterChange={handleChapterChange}
-              chapterList={chapterList!}
               isDisabled={true}
-              selectedChapter={selectedChapter}
             />
             <div className="flex-2 flex flex-col gap-2 mb-4">
               <div className="sm:text-lg font-semibold add-asterisk">
