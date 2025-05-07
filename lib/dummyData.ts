@@ -126,3 +126,36 @@ export const DUMMY_QUIZ_LIST = [
     chapter: "5. 반복문",
   },
 ];
+
+export const DUMMY_QUESTION_LIST = [
+  {
+    id: 1,
+    type: "OBJECTIVE",
+    questionText: "1. 다음 중 정답을 고르세요",
+    explanation: "",
+    options: ["1. 파이썬", "2. C++", "3. DB", "4. PLC"],
+    answer: ["1. 파이썬"],
+  },
+  {
+    id: 2,
+    type: "SUBJECTIVE",
+    questionText: "2. 점심 메뉴를 적어주세요",
+    explanation: "",
+    subjective: "돈가스",
+  },
+  {
+    id: 3,
+    type: "OBJECTIVE",
+    questionText: "1. 다음 중 정답을 고르세요",
+    explanation: "",
+    options: ["1. 파이썬", "2. C++", "3. DB", "4. PLC"],
+    answer: ["1. 파이썬"],
+  },
+  {
+    id: 4,
+    type: "SUBJECTIVE",
+    questionText: "2. 점심 메뉴를 적어주세요",
+    explanation: "",
+    subjective: "돈가스",
+  },
+];
